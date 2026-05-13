@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind CSS cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Daisyui cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Job Tracker</title>
+</head>
+
+<body class="bg-[#f0f8ff] text-[#002C5C] min-h-screen p-5">
+
+    <div class="md:w-[1110px] mx-auto mt-10">
+        <h1 class="text-3xl font-semibold my-4">Job Application Tracker</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="card bg-base-100 shadow-sm border border-base-300">
+                <div class="card-body">
+                    <p class="text-sm text-gray-500">Total</p>
+                    <h2 class="text-3xl font-bold text-primary">8</h2>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-sm border border-base-300">
+                <div class="card-body">
+                    <p class="text-sm text-gray-500">Interview</p>
+                    <h2 class="text-3xl font-bold text-success">0</h2>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-sm border border-base-300">
+                <div class="card-body">
+                    <p class="text-sm text-gray-500">Rejected</p>
+                    <h2 class="text-3xl font-bold text-error">0</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Available Jobs Section -->
+        <div class="my-8">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-semibold">
+                    Available Jobs
+                </h2>
+
+                <span class="text-sm text-slate-500">
+                    8 jobs
+                </span>
+            </div>
+        </div>
+
+        <div class="space-x-3">
+            <a class="btn bg-white border border-slate-200 text-slate-600">
+                All
+            </a>
+            <a class="btn bg-white border border-slate-200 text-slate-600">
+                Interview
+            </a>
+            <a class="btn bg-white border border-slate-200 text-slate-600">
+                Rejected
+            </a>
+        </div>
+
+        <!-- Job Cards -->
+        <div>
+            <div class="bg-white border border-slate-100 my-4 rounded-md">
+                <div class="p-4">
+                    <div>
+                        <div class="flex justify-between">
+                            <div>
+                                <h3 class="text-xl font-bold">
+                                    Mobile First Corp
+                                </h3>
+                                <p class="text-slate-500">
+                                    React Native Developer
+                                </p>
+                            </div>
+                            <div
+                                class="border border-slate-500 rounded-full p-3 cursor-pointer hover:bg-slate-100">
+                                <i class="fa-regular fa-trash-can"></i>
+                            </div>
+                        </div>
+                        <ol class="flex gap-2 my-4 space-y-4">
+                            <li class="text-slate-600 text-sm">
+                                Remote
+                            </li>
+                            <li class="text-slate-600 text-sm ">
+                                • Full-Time
+                            </li>
+                            <li class="text-slate-600 text-sm ">
+                                • $130,000 - $175,000
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="mt-3">
+                        <span class="bg-slate-100 border-none px-4 py-2 rounded-md">
+                            NOT APPLIED
+                        </span>
+                    </div>
+
+                    <p class="text-slate-600 mt-3">
+                        Build cross-platform mobile applications using React Native.
+                        Work on products used by millions of users worldwide.
+                    </p>
+
+                    <div class="flex gap-3 mt-6">
+                        <button class="btn btn-outline btn-success">
+                            INTERVIEW
+                        </button>
+                        <button class="btn btn-outline btn-error">
+                            REJECTED
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>
