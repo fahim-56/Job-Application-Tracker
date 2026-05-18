@@ -110,7 +110,7 @@ function updateCount() {
     if (rejected.children[0].id === "No-job-list") {
         rejectedCount.innerText = '0';
     }
-    totalJobsCount = parseInt(allCount.innerText) + parseInt(interviewCount.innerText) + parseInt(rejectedCount.innerText);
+     allCount.innerText = parseInt(allCount.innerText) + parseInt(interviewCount.innerText) + parseInt(rejectedCount.innerText);
 
 }
 
