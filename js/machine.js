@@ -38,7 +38,7 @@ function pageChange(id) {
         all.style.display = "block";
         allTabsBtn.classList.remove(...inactiveTab);
         allTabsBtn.classList.add(...activeTab);
-        document.getElementById("available-jobs-count").innerText = allCount.innerText;
+        document.getElementById("available-jobs-count").innerText = allCount.innerText + " jobs";
     }
     else if (id === "interview-job-list") {
         interview.style.display = "block";
