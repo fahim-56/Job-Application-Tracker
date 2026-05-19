@@ -101,17 +101,17 @@ function updateCount() {
     if (rejected.children[0].id === "No-job-list") {
         rejectedCount.innerText = '0';
     }
-    
+
     allCount.innerText = parseInt(allCount.innerText) + parseInt(interviewCount.innerText) + parseInt(rejectedCount.innerText);
 
 }
 
-updateCount();
 document.getElementById("all-job-list").addEventListener("click", function (event) {
 
-    if (event.target.classList.contains("interview-btn")) {
-        console.log("Interview button clicked");
-        const jobItem = event.target.parentNode.parentNode;
+    const clickedButton = event.target;
+    const jobItem = clickedButton.parentNode.parentNode;
+
+    if (clickedButton.classList.contains("interview-btn")) {
 
         if (interview.children[0].id === "No-job-list") {
             interview.innerHTML = "";
@@ -123,10 +123,8 @@ document.getElementById("all-job-list").addEventListener("click", function (even
                     return;
                 }
                 else if (jobItem.children[i].children[0].classList.contains("rejected-enable")) {
-                    // If the job item is already in the rejected list, then remove the rejected class and add the interview class
+
                     jobItem.children[i].children[0].classList.remove("rejected-enable");
-
-
 
                     jobItem.children[i].innerHTML = `<span class="interview-enable btn btn-outline btn-success bg-green-400 text-white">INTERVIEW</span>`;
                 }
@@ -135,14 +133,11 @@ document.getElementById("all-job-list").addEventListener("click", function (even
                 }
             }
         }
-
         interview.appendChild(jobItem);
     }
 
-    if (event.target.classList.contains("rejected-btn")) {
+    if (clickedButton.classList.contains("rejected-btn")) {
         console.log("Rejected button clicked");
-        const jobItem = event.target.parentNode.parentNode;
-
         if (rejected.children[0].id === "No-job-list") {
             rejected.innerHTML = "";
         }
@@ -157,41 +152,29 @@ document.getElementById("all-job-list").addEventListener("click", function (even
                 }
             }
         }
-
-        // const newJob = jobItem.cloneNode(true);
         rejected.appendChild(jobItem);
-        // pageChange("rejected-job-list");
     }
 
-    if (event.target.classList.contains("delete-btn")) {
-        const jobItem = event.target.parentNode.parentNode.parentNode;
-        // console.log(jobItem);
+    if (clickedButton.classList.contains("delete-btn")) {
+        const jobItem = clickedButton.parentNode.parentNode.parentNode;
         jobItem.remove();
         updateCount();
         pageChange("all-job-list");
     }
-    if (event.target.classList.contains("delete-btn-i")) {
-        const jobItem = event.target.parentNode.parentNode.parentNode.parentNode;
-        // console.log(jobItem);
+    if (clickedButton.classList.contains("delete-btn-i")) {
+        const jobItem = clickedButton.parentNode.parentNode.parentNode.parentNode;
         jobItem.remove();
         updateCount();
         pageChange("all-job-list");
     }
-
-
-
     updateCount();
-
 });
 
 
 
-// Click event listener for the interview job list to move the job item to interview or rejected list or delete the job item or vice versa
 document.getElementById("interview-job-list").addEventListener("click", function (event) {
-    // console.log(event.target.parentNode.parentNode);
 
     if (event.target.classList.contains("rejected-btn")) {
-        console.log("Rejected button clicked");
         const jobItem = event.target.parentNode.parentNode;
 
         if (rejected.children[0].id === "No-job-list") {
@@ -209,7 +192,6 @@ document.getElementById("interview-job-list").addEventListener("click", function
             }
         }
 
-        // const newJob = jobItem.cloneNode(true);
         rejected.appendChild(jobItem);
         updateCount();
         pageChange("interview-job-list");
@@ -217,27 +199,21 @@ document.getElementById("interview-job-list").addEventListener("click", function
 
     if (event.target.classList.contains("delete-btn")) {
         const jobItem = event.target.parentNode.parentNode.parentNode;
-        // console.log(jobItem);
         jobItem.remove();
         updateCount();
         pageChange("interview-job-list");
     }
     if (event.target.classList.contains("delete-btn-i")) {
         const jobItem = event.target.parentNode.parentNode.parentNode.parentNode;
-        // console.log(jobItem);
         jobItem.remove();
         updateCount();
         pageChange("interview-job-list");
     }
-
-
     updateCount();
 });
 
 
-// Click event listener for the rejected job list to move the job item to interview or rejected list or delete the job item or vice versa
 document.getElementById("rejected-job-list").addEventListener("click", function (event) {
-    // console.log(event.target.parentNode.parentNode);
 
     if (event.target.classList.contains("interview-btn")) {
         console.log("Interview button clicked");
@@ -263,28 +239,25 @@ document.getElementById("rejected-job-list").addEventListener("click", function 
                 }
             }
         }
-
         interview.appendChild(jobItem);
         updateCount();
         pageChange("rejected-job-list");
     }
 
-
-
     if (event.target.classList.contains("delete-btn")) {
         const jobItem = event.target.parentNode.parentNode.parentNode;
-        // console.log(jobItem);
         jobItem.remove();
         updateCount();
         pageChange("rejected-job-list");
     }
     if (event.target.classList.contains("delete-btn-i")) {
         const jobItem = event.target.parentNode.parentNode.parentNode.parentNode;
-        // console.log(jobItem);
         jobItem.remove();
         updateCount();
         pageChange("rejected-job-list");
     }
-
     updateCount();
 });
+
+
+updateCount();
