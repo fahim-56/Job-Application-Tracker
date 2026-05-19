@@ -1,26 +1,22 @@
 const all = document.getElementById("all-job-list");
 const interview = document.getElementById("interview-job-list");
 const rejected = document.getElementById("rejected-job-list");
+const allTabsBtn = document.getElementById("all-tabs-btn");
+const interviewTabsBtn = document.getElementById("interview-tabs-btn");
+const rejectedTabsBtn = document.getElementById("rejected-tabs-btn");
+const allCount = document.getElementById("all-count");
+const interviewCount = document.getElementById("interview-count");
+const rejectedCount = document.getElementById("rejected-count");
+const inactiveTab = ["btn", "bg-white", "border", "border-slate-200", "text-slate-600"];
+const activeTab = ["btn", "bg-blue-700", "border", "border-slate-200", "text-white"];
+
 
 all.style.display = "block";
 interview.style.display = "none";
 rejected.style.display = "none";
-
-const allTabsBtn = document.getElementById("all-tabs-btn");
-const interviewTabsBtn = document.getElementById("interview-tabs-btn");
-const rejectedTabsBtn = document.getElementById("rejected-tabs-btn");
-
-const inactiveTab = ["btn", "bg-white", "border", "border-slate-200", "text-slate-600"];
-const activeTab = ["btn", "bg-blue-700", "border", "border-slate-200", "text-white"];
-
 allTabsBtn.classList.add(...activeTab);
 interviewTabsBtn.classList.add(...inactiveTab);
 rejectedTabsBtn.classList.add(...inactiveTab);
-
-
-const allCount = document.getElementById("all-count");
-const interviewCount = document.getElementById("interview-count");
-const rejectedCount = document.getElementById("rejected-count");
 
 
 function pageChange(id) {
@@ -40,27 +36,22 @@ function pageChange(id) {
 
     if (id === "all-job-list") {
         all.style.display = "block";
-
         allTabsBtn.classList.remove(...inactiveTab);
         allTabsBtn.classList.add(...activeTab);
         document.getElementById("available-jobs-count").innerText = allCount.innerText;
     }
     else if (id === "interview-job-list") {
         interview.style.display = "block";
-
         interviewTabsBtn.classList.remove(...inactiveTab);
         interviewTabsBtn.classList.add(...activeTab);
         document.getElementById("available-jobs-count").innerText = interviewCount.innerText + " of " + allCount.innerText + " jobs";
     }
     else if (id === "rejected-job-list") {
         rejected.style.display = "block";
-
         rejectedTabsBtn.classList.remove(...inactiveTab);
         rejectedTabsBtn.classList.add(...activeTab);
         document.getElementById("available-jobs-count").innerText = rejectedCount.innerText + " of " + allCount.innerText + " jobs";
     }
-
-
 }
 
 
@@ -106,11 +97,12 @@ function updateCount() {
     if (interview.children[0].id === "No-job-list") {
         interviewCount.innerText = '0';
     }
-    console.log(rejected.children[0].id);
+
     if (rejected.children[0].id === "No-job-list") {
         rejectedCount.innerText = '0';
     }
-     allCount.innerText = parseInt(allCount.innerText) + parseInt(interviewCount.innerText) + parseInt(rejectedCount.innerText);
+    
+    allCount.innerText = parseInt(allCount.innerText) + parseInt(interviewCount.innerText) + parseInt(rejectedCount.innerText);
 
 }
 
@@ -219,7 +211,8 @@ document.getElementById("interview-job-list").addEventListener("click", function
 
         // const newJob = jobItem.cloneNode(true);
         rejected.appendChild(jobItem);
-        // pageChange("rejected-job-list");
+        updateCount();
+        pageChange("interview-job-list");
     }
 
     if (event.target.classList.contains("delete-btn")) {
@@ -272,6 +265,8 @@ document.getElementById("rejected-job-list").addEventListener("click", function 
         }
 
         interview.appendChild(jobItem);
+        updateCount();
+        pageChange("rejected-job-list");
     }
 
 
